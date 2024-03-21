@@ -4,8 +4,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import sys,crypt
 
-PURPLE = "\33[91m"
+BLUE = "\033[0;34m"
 ENDCOLOR = "\033[0m"
+RED = "\033[0;31m"
 
 def display_banner():
     banner_text = ''' 
@@ -28,13 +29,20 @@ def display_banner():
 |  |  |  |  /  _____  \  .----)   |   |  |  |  |    |  `----.|  |\  \----. /  _____  \  |  `----.|  .  \  |  |____ |  |\  \----.
 |__|  |__| /__/     \__\ |_______/    |__|  |__|     \______|| _| `._____|/__/     \__\  \______||__|\__\ |_______|| _| `._____|
 
+    '''
+    print(f"{BLUE}{banner_text}{ENDCOLOR}")
+display_banner()
+
+def display_info():
+    banner_info = ''' 
 
 BarbieHashCracker V1.0
 Coded by Barbie Leon
 
     '''
-    print(f"{PURPLE}{banner_text}{ENDCOLOR}")
-display_banner()
+    print(f"{banner_info}")
+display_info()
+
 
 
 if len(sys.argv) <=1:
@@ -52,4 +60,4 @@ else:
             password = passwords_in_file.strip()
             hashed_password = crypt.crypt(password, salt)
             if(targetHash == hashed_password):
-                print("Original password: ", password, "Hashed: ",hashed_password)
+                print(f"{RED}Original password: {ENDCOLOR}", password, f"{RED}Hashed Password: {ENDCOLOR}",hashed_password)
